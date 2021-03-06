@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+  postgresdb:
+    image: postgres:13.2-alpine
+    container_name: c-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=longcv
+      - POSTGRES_PASSWORD=0502
+      - POSTGRES_DB=refermedb
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: c-pgadmin
+    ports:
+      - "5000:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=longcv
+      - PGADMIN_DEFAULT_PASSWORD=0502

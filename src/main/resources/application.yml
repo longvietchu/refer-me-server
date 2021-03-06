@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgresdb:5432/refer_me
+    username: longcv
+    password: 0502
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.jdbc.lob.non_contextual_creation: true
+      hibernate:
+        enable_lazy_load_no_trans: true
