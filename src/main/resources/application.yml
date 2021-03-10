@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://postgresdb:5432/refer_me
+    url: jdbc:postgresql://postgresdb:5432/refermedb
     username: longcv
     password: 0502
 
