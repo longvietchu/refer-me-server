@@ -7,8 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Type;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -19,12 +19,15 @@ public class UserService {
     @Autowired
     private ModelMapper mapper;
 
-    public List<User> findAll() {
-        return (List<User>) userRepository.findAll();
+    public List<UserDto> findAll() {
+        List<User> users = (List<User>) userRepository.findAll();
+        return users
+                .stream()
+                .map(user -> mapper.map(user, UserDto.class))
+                .collect(Collectors.toList());
     }
 
-    public User createNewUser(UserDto userDto) {
-        User user = mapper.map(userDto, User.class);
+    public User createNewUser(User user) {
         return userRepository.save(user);
     }
 }

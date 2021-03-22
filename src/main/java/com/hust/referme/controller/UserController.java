@@ -1,6 +1,7 @@
 package com.hust.referme.controller;
 
 import com.hust.referme.dto.UserDto;
+import com.hust.referme.entity.User;
 import com.hust.referme.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> createNewUser(@RequestBody UserDto userDto) {
-        return ResponseEntity.ok().body(userService.createNewUser(userDto));
+    public ResponseEntity<?> createNewUser(@RequestBody User user) {
+        return ResponseEntity.ok().body(userService.createNewUser(user));
     }
 }

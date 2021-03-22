@@ -11,8 +11,6 @@ public class UserDto {
     private String name;
     @NotNull
     private String email;
-    @NotNull
-    private String password;
 
     private LocalDateTime dob;
     private String avatar;
@@ -26,10 +24,9 @@ public class UserDto {
     public UserDto() {
     }
 
-    public UserDto(String name, String email, String password, LocalDateTime dob, String avatar, String backgroundImage, String about, int gender) {
+    public UserDto(String name, String email, LocalDateTime dob, String avatar, String backgroundImage, String about, int gender) {
         this.name = name;
         this.email = email;
-        this.password = password;
         this.dob = dob;
         this.avatar = avatar;
         this.backgroundImage = backgroundImage;
@@ -51,14 +48,6 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public LocalDateTime getDob() {
