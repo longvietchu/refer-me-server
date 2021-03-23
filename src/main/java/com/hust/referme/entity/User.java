@@ -33,12 +33,12 @@ public class User {
     @Column(name = "created_at")
     @CreatedDate
     @NotNull
-    private LocalDateTime createdAt;
+    private final LocalDateTime createdAt = LocalDateTime.now();
 
     public User() {
     }
 
-    public User(String name, String email, String password, LocalDateTime dob, String avatar, String backgroundImage, String about, int gender, LocalDateTime createdAt) {
+    public User(String name, String email, String password, LocalDateTime dob, String avatar, String backgroundImage, String about, int gender) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -47,7 +47,6 @@ public class User {
         this.backgroundImage = backgroundImage;
         this.about = about;
         this.gender = gender;
-        this.createdAt = createdAt;
     }
 
     public String getName() {
@@ -116,9 +115,5 @@ public class User {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 }

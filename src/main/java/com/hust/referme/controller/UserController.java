@@ -1,6 +1,5 @@
 package com.hust.referme.controller;
 
-import com.hust.referme.dto.UserDto;
 import com.hust.referme.entity.User;
 import com.hust.referme.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +13,18 @@ public class UserController {
     @Autowired
     UserService userService;
 
-//    @GetMapping("/{userId}")
-//    public ResponseEntity<?> getUser(@PathVariable (name = "userId") Integer userId) {
-//        return ResponseEntity.ok().body();
-//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUser(@PathVariable (name = "id") String id) {
+        Long userId = Long.parseLong(id);
+        return ResponseEntity.ok().body(userService.findUserById(userId));
+    }
 
     @GetMapping("/all")
     public ResponseEntity<?> getUsers() {
         return ResponseEntity.ok().body(userService.findAll());
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<?> createNewUser(@RequestBody User user) {
         return ResponseEntity.ok().body(userService.createNewUser(user));
     }
