@@ -1,4 +1,4 @@
-package com.hust.referme.dto;
+package com.hust.referme.app.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
