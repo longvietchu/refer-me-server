@@ -1,8 +1,8 @@
 package com.hust.referme.app.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class UserDto {

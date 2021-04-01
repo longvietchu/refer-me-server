@@ -2,6 +2,8 @@ package com.hust.referme.domain.service;
 
 import com.hust.referme.app.response.UserResponse;
 import com.hust.referme.domain.entity.User;
+import com.hust.referme.domain.exception.BadRequestException;
+import com.hust.referme.domain.exception.Message;
 import com.hust.referme.domain.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +28,8 @@ public class UserService {
         return ResponseEntity.ok(userResponses);
     }
 
-    public ResponseEntity<?> createNewUser(User user) {
-        userRepository.save(user);
-        return ResponseEntity.ok(true);
-    }
-
-    public ResponseEntity<?> findUserById(Long userId) {
-        User user = userRepository.findById(userId).orElse(null);
+    public ResponseEntity<?> findUserById(Long userId) throws BadRequestException {
+        User user = userRepository.findById(userId).orElseThrow(() -> new BadRequestException(Message.USERNAME_NOT_EXISTED));
         UserResponse userResponse = mapper.map(user, UserResponse.class);
         return ResponseEntity.ok(userResponse);
     }

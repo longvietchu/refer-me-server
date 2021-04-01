@@ -1,15 +1,17 @@
 package com.hust.referme.domain.entity;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
 @Data
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -28,7 +30,13 @@ public class User {
     private String about;
     private int gender;
     @Column(name = "created_at")
-    @CreatedDate
+    @CreationTimestamp
     @NotNull
     private final LocalDateTime createdAt = LocalDateTime.now();
+
+    public void assignFormRegister(String name, String email, String password) {
+        setName(name);
+        setEmail(email);
+        setPassword(password);
+    }
 }
